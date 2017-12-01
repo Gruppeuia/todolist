@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express(); //server-app
 
-app.use(express.static('client'));
 
+app.use(express.static('client'));
 
 // global for all routes -------------------------
 app.use(function(req, res, next) {
@@ -20,14 +20,10 @@ app.use('/ToDo/liste/', liste);
 var login = require('./login.js');
 app.use('/ToDo/login/', login);
 
-//Not yet implemented:
-//var users = require('./users.js');
-//app.use('/travellog/users/', users);
-
 //------------------------------------------------
 var port = process.env.PORT || 8080;
-app.listen(port, function () {
-  
+app.listen(8080, function () {
+ 
 });
 
 
