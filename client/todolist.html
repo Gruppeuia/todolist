@@ -48,11 +48,14 @@
     
     btnDelete.onclick = function()  {  
             
-        var url = "http://localhost:8080/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token;  
+        //var url = "http://localhost:8080/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token;  
+        var url = "https://toddelidoo.herukuapp.com/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token;  
         superfetch(url, "json", delSucc, error, {method: "DELETE"}); 
         location.reload();
         
     }
+	
+	//var url = "https://https://toddelidoo.herukuapp.com/ToDo/login/";
     
     //delete success -------------------------------
     function delSucc(data) {
@@ -70,7 +73,8 @@
             tid: inpTid.value
         });
         
-        var url = "http://localhost:8080/ToDo/liste/?token=" + token;
+        //var url = "http://localhost:8080/ToDo/liste/?token=" + token;
+        var url = "http://toddelidoo.herukuapp.com/ToDo/liste/?token=" + token;
        
     
         var cfg = {
@@ -96,7 +100,7 @@
     
     function oppfriskliste() {
         
-        var url = "http://localhost:8080/ToDo/liste/?token=" + token; 
+        var url = "http://toddelidoo.herukuapp.com/ToDo/liste/?token=" + token; 
         superfetch(url, "json", function(data) {
             
             cont.innerHTML = "";
