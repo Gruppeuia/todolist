@@ -10,21 +10,25 @@
 
     <fieldset>
 
-    <br>    
-        
+        <br>    
+
         <center><img src="logo2.jpg" alt="" width="150" height="140"></center>
-        
-<center><h1>Lag bruker</h1></center>
-    <br>
-        
- <input id="inpLoginname" placeholder="Brukernavn" type="text" value="">
- <input id="inpPassword" type="password" placeholder="Passord" value="">
- <input id="inpFullname" placeholder="Fullt Navn" type="text" value="">
- <button id="btnCreate">Bekreft</button>
-  
-    <center><p><a href="index.html">Gå tilbake</a></p></center>
+
+        <center><h1>Lag bruker</h1></center>
+        <br>
+
+         <input id="inpLoginname" placeholder="Brukernavn" type="text" value="">
+         <input id="inpPassword" type="password" placeholder="Passord" value="">
+         <input id="inpFullname" placeholder="Fullt Navn" type="text" value="">
+         <button id="btnCreate">Bekreft</button>
+
+        <center><p><a href="index.html">Gå tilbake</a></p></center>
 
     </fieldset>
+    
+    <h3 id="msg">cbdfg</h3>
+    
+
      
 <script>  
         
@@ -32,7 +36,8 @@
     var inpLoginname = document.getElementById("inpLoginname");
     var inpPassword = document.getElementById("inpPassword");
     var inpFullname = document.getElementById("inpFullname");    
-    var btnCreate = document.getElementById("btnCreate"); 
+    var btnCreate = document.getElementById("btnCreate");
+    var msg = document.getElementById("msg"); 
     
     
     
@@ -56,7 +61,8 @@
         }      
 
         superfetch(url, "json", succ, error, cfg);
-        location.reload();
+        //location.reload();
+        
     }
     
     
@@ -65,6 +71,9 @@
 
         //save logindata/token to localStorage 
         localStorage.setItem("logindata", JSON.stringify(data));
+        inpLoginname.value = "";
+        msg.innerHTML = "Login ok";
+        
        /*  txtMsg.innerHTML = "Bruker er laget" */
     }
     
