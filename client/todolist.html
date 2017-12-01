@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>ToDo</title>
+    <script src="superfetch2.js"></script>
+</head>
+<body>
+
+    <fieldset>
+    
+    <h1>- Lister -</h1> <hr> <br>
+  
+    
+<div>
+    
+    <input id="listenavn" placeholder="Listenavn" value="">
+    <textarea id="inpdescr" placeholder="Beskrivelse"></textarea>
+    <input id="tid" type="date" placeholder="Tid" value=""> <br> <br>
+    <button onclick="createList()" id="btn">Lag liste</button>
+    <input id="idslett" placeholder="Skriv inn liste" value="">
+    <button id="deletelist">Slett liste</button>
+    <br>
+
+ </div>
+        
+    <div id="cont"></div>
+    
+    </fieldset>
+    
+</body> 
+    
+<script>  
+        
+   
+    var inpListeNavn = document.getElementById("listenavn");
+    var inpBeskrivelse = document.getElementById("inpdescr");
+    var inpTid = document.getElementById("tid");
+    var idSlett = document.getElementById("idslett");
+    var btnDelete = document.getElementById("deletelist");
+    var cont = document.getElementById("cont");
+    var token = JSON.parse(localStorage.getItem("logindata")).token;
+    
+    
+    //oppfrisk lista
+    oppfriskliste();
+    
+    
+    btnDelete.onclick = function()  {  
+            
+        var url = "http://localhost:8080/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token;  
+        superfetch(url, "json", delSucc, error, {method: "DELETE"}); 
+        location.reload();
+        
+    }
+    
+    //delete success -------------------------------
+    function delSucc(data) {
+        console.log(data);
+        oppfriskliste();
+              
+    }
+    
+    
+    //button click ---------------------------------
+    function createList() {   
+    
+        var upload = JSON.stringify({            
+           
+            listenavn: inpListeNavn.value,
+            beskrivelse: inpBeskrivelse.value,
+            tid: inpTid.value
+        });
+        
+        var url = "http://localhost:8080/ToDo/liste/?token=" + token;
+       
+    
+        var cfg = {
+            method: "POST",            
+            body: upload 
+        
+        }
+        
+         
+            superfetch(url, "json", succ, error, cfg);
+            location.reload();
+           
+    }    
+    
+     //success --------------------------------------
+      function succ(data) {
+          
+          console.log(data);
+          
+          oppfriskliste();
+                
+        
+      }
+    
+     //error ----------------------------------------
+        function error(err) {
+            console.log(err);
+        }
+    
+    function oppfriskliste() {
+        
+        var url = "http://localhost:8080/ToDo/liste/?token=" + token; 
+        superfetch(url, "json", function(data) {
+            
+            cont.innerHTML = "";
+
+            console.log(data);
+
+            for (var i = 0; i < data.length; i++) {
+                
+                var formtid = new Date(data[i].tid).toDateString();
+                
+                var div = document.createElement("div");
+                div.innerHTML += "<h3>Listeid: " + data[i].listeid + "</h3>";
+                div.innerHTML += "<h3>Listenavn: " + data[i].listenavn + "</h3>";
+                div.innerHTML += "<h3>Beskrivelse: " + data[i].beskrivelse + "</h3>";
+                div.innerHTML += "<h3>Tid: " + formtid + "</h3>";
+               
+                
+                var hr = document.createElement("hr");  
+                cont.appendChild(hr);
+                cont.appendChild(div);
+                
+            }
+
+        }, error);
+    }
+      
+ </script>
+        
+    
+ <style>    
+    
+
+     input, textarea, label, p {        
+        width: 95%;
+        margin-bottom: 8px;
+        margin-left: 10px;
+        height: 40px;
+        font-size: 1.5em;
+        font-family: serif;
+        font-family: serif;
+        text-align: center;
+        font-family: "TW Cen MT";
+         
+    }  
+     
+     
+     #deletelist {
+        background-color: #009966; /* Yellow*/
+        width: 95%;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        color: white;
+        height: 40px;
+        font-size: 1.5em;
+        font-family: serif;
+        text-shadow: 2px 2px #666666;
+        text-align: center;
+        font-family: "TW Cen MT";   
+    
+     }
+     
+       #btn {
+        background-color: #FFCC00; 
+        width: 95%;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        color: white;
+        height: 40px;
+        font-size: 1.5em;
+        font-family: serif;
+        text-shadow: 2px 2px #666666;
+        text-align: center;
+        font-family: "TW Cen MT";   
+    
+     }
+     
+    
+     h1 {
+         
+         font-size: 50px;
+         text-align: center;
+         text-shadow: 2px 2px #CCC;
+         font-family: "The Blacklist";
+         margin-bottom: 1px;
+         margin-top: 10px;
+     }
+     
+    fieldset {
+      border-radius: 70%;
+      -webkit-border-radius: 5px;
+      width: 650px;
+      min-height: 640px;
+      margin-left: 30%;
+      margin-top: 40px;
+      background-color: white;
+     
+     }
+    
+
+    body {
+        background-color: #CCC; 
+     
+     }
+     
+     
+    
+     
+     
+</style>
+    
+
+    
+</html>
