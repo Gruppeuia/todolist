@@ -3,42 +3,29 @@
 <html>
 <head>
     <meta charset="utf-8" />    
-    <title>login</title>    
+    <title>Create user</title>    
     <script src="superfetch2.js"></script>
 </head>
 
 <body>    
     <fieldset>
-        
-  
-        
-        
-      <br>
-        
+      <br>      
         <center><img src="logo2.jpg" alt="" width="150" height="140"></center>
-        
         <center><h2>Logg Inn</h2></center>
         <br>
 
-        
-   
     <input id="inpLoginname" placeholder="Brukernavn">
     <input id="inpPassword" type="password" placeholder="Passord">      
     <button id="btnLogin">Logg inn</button> 
-    <button id="createUser" button onclick="window.location.href='createuser.html'">Lag bruker</button>
-
-        
+    <button id="createUser" button onclick="window.location.href='createuser.html'">Lag bruker</button>   
         </fieldset>
     </body>
     
-    <script>
-    
+    <script>  
     var inpLoginname = document.getElementById("inpLoginname");
     var inpPassword = document.getElementById("inpPassword");       
     var btnLogin = document.getElementById("btnLogin"); 
-    var createUser = document.getElementById("createUser");
-    
-    
+    var createUser = document.getElementById("createUser"); 
     //button click ---------------------------------
     btnLogin.onclick = function() {   
     
@@ -47,10 +34,7 @@
             password: inpPassword.value            
         });
         
-        //var url = "http://localhost:8080/ToDo/login/auth/";
-        var url = "https://toddelidoo.herokuapp.com/ToDo/login/auth/";
-        
-        
+        var url = "http://localhost:8080/ToDo/login/auth/";
 
         var cfg = {
             method: "POST",            
@@ -119,9 +103,7 @@
     font-size: 1.5em;
             
 }
-
-     
-       
+      
      h2 {
          
          font-size: 50px;
@@ -131,10 +113,6 @@
          margin-top: 10px;
  
      }
-     
-     
-
-
      
      input, button, textarea, label {        
         width: 70%;
@@ -150,9 +128,7 @@
             align-content: center;
          
     }  
-     
-      
-    
+	 
   fieldset {
  border-radius: 50px;
       -webkit-border-radius: 5px;
@@ -160,20 +136,13 @@
       height: 480px;
       margin-left: 30%;
       margin-top: 40px;
-      background-color: white;
-     
-}
-    
+      background-color: white;    
+}   
 
     body {background-color: #CCC;}
-     
-     
+         
 }
-     
-     
-   
 
-    
     
 </style>
 
