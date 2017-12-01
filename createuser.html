@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>createuser</title>
+    <script src="superfetch2.js"></script>
+</head>
+<body>
+
+    <fieldset>
+
+    <br>    
+        
+        <center><img src="logo2.jpg" alt="" width="150" height="140"></center>
+        
+<center><h1>Lag bruker</h1></center>
+    <br>
+        
+ <input id="inpLoginname" placeholder="Brukernavn" type="text" value="">
+ <input id="inpPassword" type="password" placeholder="Passord" value="">
+ <input id="inpFullname" placeholder="Fullt Navn" type="text" value="">
+ <button id="btnCreate">Bekreft</button>
+  
+    <center><p><a href="index.html">Gå tilbake</a></p></center>
+
+    </fieldset>
+     
+<script>  
+        
+ 
+    var inpLoginname = document.getElementById("inpLoginname");
+    var inpPassword = document.getElementById("inpPassword");
+    var inpFullname = document.getElementById("inpFullname");    
+    var btnCreate = document.getElementById("btnCreate"); 
+    
+    
+    
+    
+    
+    //button click ---------------------------------
+    btnCreate.onclick = function() {   
+    
+        var upload = JSON.stringify({            
+            loginname: inpLoginname.value,
+            password: inpPassword.value,
+            fullname: inpFullname.value            
+        });
+        
+        //var url = "http://localhost:8080/ToDo/login/";
+        var url = "https://toddelidoo.herokuapp.com/ToDo/login/";
+
+        var cfg = {
+            method: "POST",            
+            body: upload
+        }      
+
+        superfetch(url, "json", succ, error, cfg);
+        location.reload();
+    }
+    
+    
+        //success --------------------------------------
+    function succ(data) {
+
+        //save logindata/token to localStorage 
+        localStorage.setItem("logindata", JSON.stringify(data));
+       /*  txtMsg.innerHTML = "Bruker er laget" */
+    }
+    
+    //error ----------------------------------------
+    function error(err) {
+        console.log(err);
+        /* txtMsg.innerHTML = "Det skjedde en feil, prøv igjen senere";  */
+        
+    }
+ 
+    
+ </script>
+    
+   
+    
+ <style> 
+     
+     
+         
+     h1 {
+         
+         font-size: 50px;
+         text-align: center;
+         text-shadow: 3px 2px #CCC;
+         margin-bottom: 1px;
+         margin-top: 10px;
+ 
+     }
+     
+     
+          #btnCreate{
+    background-color: #009966; /* Yellow*/
+    border: none;
+    color: white;
+    padding: 3px 44px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px;
+    margin-left: 15%;
+    text-shadow: 2px 2px #666666;
+    align-content: center;
+    font-size: 1.5em;
+}
+
+        
+        
+     input, button, textarea, label {        
+        width: 70%;
+        margin-bottom: 8px;
+         margin-left: 15%;
+        height: 40px;
+              font-size: 1.5em;
+        font-family: sans-serif;
+         text-align: center;
+           text-align: center;
+           font-family: "TW Cen MT";
+         
+            align-content: center;
+         
+    }  
+     
+     
+  fieldset {
+ border-radius: 50px;
+      -webkit-border-radius: 5px;
+  width: 600px;
+      height: 500px;
+      margin-left: 30%;
+      margin-top: 40px;
+      background-color: white;
+     
+}
+    
+
+    body {background-color: #CCC;}
+     
+     
+}
+    
+</style>
+
+    
+</body>
+</html>
