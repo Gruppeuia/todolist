@@ -3,29 +3,42 @@
 <html>
 <head>
     <meta charset="utf-8" />    
-    <title>Create user</title>    
+    <title>login</title>    
     <script src="superfetch2.js"></script>
 </head>
 
 <body>    
     <fieldset>
-      <br>      
+        
+  
+        
+        
+      <br>
+        
         <center><img src="logo2.jpg" alt="" width="150" height="140"></center>
+        
         <center><h2>Logg Inn</h2></center>
         <br>
 
+        
+   
     <input id="inpLoginname" placeholder="Brukernavn">
     <input id="inpPassword" type="password" placeholder="Passord">      
     <button id="btnLogin">Logg inn</button> 
-    <button id="createUser" button onclick="window.location.href='createuser.html'">Lag bruker</button>   
+    <button id="createUser" button onclick="window.location.href='createuser.html'">Lag bruker</button>
+
+        
         </fieldset>
     </body>
     
-    <script>  
+    <script>
+    
     var inpLoginname = document.getElementById("inpLoginname");
     var inpPassword = document.getElementById("inpPassword");       
     var btnLogin = document.getElementById("btnLogin"); 
-    var createUser = document.getElementById("createUser"); 
+    var createUser = document.getElementById("createUser");
+    
+    
     //button click ---------------------------------
     btnLogin.onclick = function() {   
     
@@ -35,7 +48,9 @@
         });
         
         //var url = "http://localhost:8080/ToDo/login/auth/";
-		var url = "https://toddelidoo.herukuapp.com/ToDo/login/";
+        var url = "https://toddelidoo.herokuapp.com/ToDo/login/auth/";
+        
+        
 
         var cfg = {
             method: "POST",            
@@ -104,7 +119,9 @@
     font-size: 1.5em;
             
 }
-      
+
+     
+       
      h2 {
          
          font-size: 50px;
@@ -115,34 +132,48 @@
  
      }
      
+     
+
+
+     
      input, button, textarea, label {        
         width: 70%;
         margin-bottom: 8px;
-        margin-left: 15%;
+         margin-left: 15%;
         height: 40px;
-        font-size: 1.5em;
+              font-size: 1.5em;
         font-family: sans-serif;
-        text-align: center;
-        text-align: center;
-        font-family: "TW Cen MT"; 
-        align-content: center;
+         text-align: center;
+           text-align: center;
+           font-family: "TW Cen MT";
+         
+            align-content: center;
          
     }  
-	 
+     
+      
+    
   fieldset {
  border-radius: 50px;
       -webkit-border-radius: 5px;
-  	width: 600px;
+  width: 600px;
       height: 480px;
       margin-left: 30%;
       margin-top: 40px;
-      background-color: white;    
-}   
+      background-color: white;
+     
+}
+    
 
     body {background-color: #CCC;}
-         
+     
+     
 }
+     
+     
+   
 
+    
     
 </style>
 

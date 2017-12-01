@@ -10,7 +10,7 @@
 
     <fieldset>
     
-    <h1> Lister </h1>  <br>
+    <h1>- Lister -</h1> <hr> <br>
   
     
 <div>
@@ -41,28 +41,29 @@
     var btnDelete = document.getElementById("deletelist");
     var cont = document.getElementById("cont");
     var token = JSON.parse(localStorage.getItem("logindata")).token;
-      
+    
+    
     //oppfrisk lista
     oppfriskliste();
     
     
     btnDelete.onclick = function()  {  
             
-        //var url = "http://localhost:8080/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token;  
-        var url = "https://toddelidoo.herukuapp.com/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token;  
+        //var url = "http://localhost:8080/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token; 
+        var url = "https://toddelidoo.herokuapp.com/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token; 
         superfetch(url, "json", delSucc, error, {method: "DELETE"}); 
         location.reload();
         
     }
-	
-	//var url = "https://https://toddelidoo.herukuapp.com/ToDo/login/";
     
     //delete success -------------------------------
     function delSucc(data) {
         console.log(data);
         oppfriskliste();
               
-    }    
+    }
+    
+    
     //button click ---------------------------------
     function createList() {   
     
@@ -74,7 +75,7 @@
         });
         
         //var url = "http://localhost:8080/ToDo/liste/?token=" + token;
-        var url = "https://toddelidoo.herukuapp.com/ToDo/liste/?token=" + token;
+        var url = "https://toddelidoo.herokuapp.com/ToDo/liste/?token=" + token;
        
     
         var cfg = {
@@ -82,15 +83,21 @@
             body: upload 
         
         }
-           superfetch(url, "json", succ, error, cfg);
-            location.reload();        
-    }      
+        
+         
+            superfetch(url, "json", succ, error, cfg);
+            location.reload();
+           
+    }    
+    
      //success --------------------------------------
       function succ(data) {
           
           console.log(data);
           
-          oppfriskliste();                
+          oppfriskliste();
+                
+        
       }
     
      //error ----------------------------------------
@@ -100,7 +107,8 @@
     
     function oppfriskliste() {
         
-        var url = "https://toddelidoo.herukuapp.com/ToDo/liste/?token=" + token; 
+        //var url = "http://localhost:8080/ToDo/liste/?token=" + token;
+        var url = "http://toddelidoo.herokuapp.com/ToDo/liste/?token=" + token; 
         superfetch(url, "json", function(data) {
             
             cont.innerHTML = "";
@@ -128,8 +136,11 @@
     }
       
  </script>
-         
+        
+    
  <style>    
+    
+
      input, textarea, label, p {        
         width: 95%;
         margin-bottom: 8px;
@@ -195,11 +206,19 @@
       background-color: white;
      
      }
-   
+    
+
     body {
         background-color: #CCC; 
      
      }
-  
-	</style> 
+     
+     
+    
+     
+     
+</style>
+    
+
+    
 </html>
