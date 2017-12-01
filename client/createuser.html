@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>ToDo</title>
+    <title>createuser</title>
     <script src="superfetch2.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
  <input id="inpFullname" placeholder="Fullt Navn" type="text" value="">
  <button id="btnCreate">Bekreft</button>
   
-    <center><p><a href="login.html">Gå tilbake</a></p></center>
+    <center><p><a href="index.html">Gå tilbake</a></p></center>
 
     </fieldset>
      
@@ -47,7 +47,8 @@
             fullname: inpFullname.value            
         });
         
-        var url = "http://localhost:8080/ToDo/login/";
+        //var url = "http://localhost:8080/ToDo/login/";
+        var url = "https://toddelidoo.herokuapp.com/ToDo/login/";
 
         var cfg = {
             method: "POST",            
@@ -73,13 +74,6 @@
         /* txtMsg.innerHTML = "Det skjedde en feil, prøv igjen senere";  */
         
     }
-
-    
-  
-    
-    
-    
-    
  
     
  </script>

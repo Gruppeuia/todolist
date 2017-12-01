@@ -49,7 +49,8 @@
     
     btnDelete.onclick = function()  {  
             
-        var url = "http://localhost:8080/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token;  
+        //var url = "http://localhost:8080/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token; 
+        var url = "https://toddelidoo.herokuapp.com/ToDo/liste/?listeid="  + idSlett.value + "&token=" + token; 
         superfetch(url, "json", delSucc, error, {method: "DELETE"}); 
         location.reload();
         
@@ -73,7 +74,8 @@
             tid: inpTid.value
         });
         
-        var url = "http://localhost:8080/ToDo/liste/?token=" + token;
+        //var url = "http://localhost:8080/ToDo/liste/?token=" + token;
+        var url = "http://toddelidoo.herokuapp.com/ToDo/liste/?token=" + token;
        
     
         var cfg = {
